@@ -1,8 +1,9 @@
 from sys import exit,argv
-import requests
+from requests import get
 from multiprocessing import Pool
-import os
-import time
+from os import mkdir
+from os.path import exists
+from time import ctime
 
 def fread(filename):
     try:
@@ -30,10 +31,10 @@ def fwrite(filename,a):
 
 def fwrite_result(t):
     try:
-        if os.path.exists("result")!=True:
-            os.mkdir("result")
-        if os.path.exists("result\\"+t)!=True:
-            os.mkdir("result\\"+t)
+        if exists("result")!=True:
+            mkdir("result")
+        if exists("result\\"+t)!=True:
+            mkdir("result\\"+t)
     except:
         print("error in creating dirs")
         log_out(0)
@@ -42,7 +43,7 @@ def socks4_checker(proxysite):
     try:
         proxy=proxysite[0]
         site="https://"+proxysite[1]
-        result = requests.get(site, proxies={'http': 'socks4://'+proxy,'https': 'socks4://'+proxy},timeout=20)
+        result = get(site, proxies={'http': 'socks4://'+proxy,'https': 'socks4://'+proxy},timeout=20)
         if result.status_code==200:
             print("good:"+proxy)
             return proxy
@@ -54,7 +55,7 @@ def socks5_checker(proxysite):
     try:
         proxy=proxysite[0]
         site="https://"+proxysite[1]
-        result = requests.get(site, proxies={'http': 'socks5://'+proxy,'https': 'socks5://'+proxy},timeout=20)
+        result = get(site, proxies={'http': 'socks5://'+proxy,'https': 'socks5://'+proxy},timeout=20)
         if result.status_code==200:
             print("good:"+proxy)
             return proxy
@@ -66,7 +67,7 @@ def http(proxysite):
     try:
         proxy=proxysite[0]
         site="https://"+proxysite[1]
-        result = requests.get(site, proxies={'http': proxy,'https': proxy},timeout=20)
+        result = get(site, proxies={'http': proxy,'https': proxy},timeout=20)
         if result.status_code==200:
             print("good:"+proxy)
             return proxy
@@ -125,7 +126,7 @@ def check_proxy(n):
         log_out(2)
     else:
         print("Saving good proxy")
-        t_result=str(time.ctime()).replace(":","_")
+        t_result=str(ctime()).replace(":","_")
         fwrite_result(t_result)
         fwrite("result\\"+t_result+"\\"+"good_"+n[1]+".txt",good_proxy)
 
