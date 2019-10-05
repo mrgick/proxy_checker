@@ -136,11 +136,16 @@ def main():
             log_out(1)
 
         else:
-            n=[]
-            n.append(argv[3].replace("-procs=",""))
-            n.append(argv[2].replace("-type_proxy=",""))
-            n.append(argv[1].replace("-proxy=",""))
-            n.append(argv[4].replace("-site=",""))
+            n=["0","0","0","0"]
+            for x in range(len(argv)):
+                if argv[x].split('=')[0]=="-procs":
+                    n[0]=argv[x].replace("-procs=","")
+                elif argv[x].split('=')[0]=="-type_proxy":
+                    n[1]=argv[x].replace("-type_proxy=","")
+                elif argv[x].split('=')[0]=="-proxy":
+                    n[2]=argv[x].replace("-proxy=","")
+                elif argv[x].split('=')[0]=="-site":
+                    n[3]=argv[x].replace("-site=","")
             check_proxy(n)
     except:
         log_out(0)
