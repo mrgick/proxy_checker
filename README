@@ -1,5 +1,7 @@
 Hello)
-It is a proxy checker)
+
+It is a proxy checker written on python 3.5+)
+
 It can check all types of proxy (http,socks4,socks5)
 
 It requirement library requests (https://github.com/psf/requests)
