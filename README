@@ -1,6 +1,6 @@
 Hello)
 
-It is a proxy checker written on python 3.5+)
+It is a multiprocessing proxy checker written on python 3.5+)
 
 It can check all types of proxy (http,socks4,socks5)
 
