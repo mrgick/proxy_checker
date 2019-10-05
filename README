@@ -1,0 +1,9 @@
+Hello)
+It is a proxy checker)
+It can check all types of proxy (http,socks4,socks5)
+
+It requirement library requests (https://github.com/psf/requests)
+
+Example of running: checker_proxy -proxy=C:\\proxy.txt -type_proxy=socks4 -procs=100 -site=google.com
+
+Good luck)
