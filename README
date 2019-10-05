@@ -4,7 +4,7 @@ It is a proxy checker written on python 3.5+)
 
 It can check all types of proxy (http,socks4,socks5)
 
-It requirement's library requests (https://github.com/psf/requests)
+It requirements library requests (https://github.com/psf/requests)
 
 Example of running: checker_proxy -proxy=C:\\proxy.txt -type_proxy=socks4 -procs=100 -site=google.com
 
