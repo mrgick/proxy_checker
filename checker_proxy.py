@@ -104,7 +104,7 @@ def check_proxy(n):
         log_out(0)
     if n[1]=="http":
         print("Start checking proxy")
-        proxy_list=pool.map(socks4_checker, proxy_list)
+        proxy_list=pool.map(http_checker, proxy_list)
     elif n[1]=="socks4":
         print("Start checking proxy")
         proxy_list=pool.map(socks4_checker, proxy_list)
